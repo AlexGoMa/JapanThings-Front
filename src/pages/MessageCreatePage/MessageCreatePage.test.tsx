@@ -6,7 +6,7 @@ import MessageCreatePage from "./MessageCreatePage";
 
 describe("Given a RegisterPage component", () => {
   describe("When invoked", () => {
-    test("Then it should render 3 input text fields and a button", () => {
+    test("Then it should render 3 input text fields", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>

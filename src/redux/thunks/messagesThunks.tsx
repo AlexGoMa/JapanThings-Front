@@ -42,7 +42,9 @@ export const messagesListThunk = () => async (dispatch: AppDispatch) => {
     dispatch(loadMessagesActionCreator(messages));
     stopOkLoadingModal("Messages loaded");
   } catch (error: any) {
-    stopErrorLoadingModal(`Something gone wrong: ${error}`);
+    stopErrorLoadingModal(
+      `Something gone wrong: ${error.response.data.message}`
+    );
   }
 };
 
@@ -58,7 +60,7 @@ export const mineMessagesListThunk =
       stopOkLoadingModal(`Messages Loaded`);
     } catch (error: any) {
       stopErrorLoadingModal(
-        `Something gone wrong: There are no messages in the DB`
+        `Something gone wrong: ${error.response.data.message}`
       );
     }
   };
@@ -74,7 +76,9 @@ export const getMessagesByCategoryThunk =
       dispatch(loadMessagesActionCreator(messages));
       stopOkLoadingModal(`Messages Loaded`);
     } catch (error: any) {
-      stopErrorLoadingModal(`Something gone wrong: ${error}`);
+      stopErrorLoadingModal(
+        `Something gone wrong: ${error.response.data.message}`
+      );
     }
   };
 
@@ -87,7 +91,9 @@ export const messageDeleteThunk =
       dispatch(deleteMessageActionCreator(id));
       stopOkLoadingModal(`Message deleted successfully`);
     } catch (error: any) {
-      stopErrorLoadingModal(`Something gone wrong: ${error}`);
+      stopErrorLoadingModal(
+        `Something gone wrong: ${error.response.data.message}`
+      );
     }
   };
 
@@ -102,7 +108,9 @@ export const messageGetThunk =
       dispatch(loadOneMessageActionCreator(message));
       stopOkLoadingModal(`Message got successfully`);
     } catch (error: any) {
-      stopErrorLoadingModal(`Something gone wrong: ${error}`);
+      stopErrorLoadingModal(
+        `Something gone wrong: ${error.response.data.message}`
+      );
     }
   };
 
@@ -121,8 +129,8 @@ export const messageCreateThunk =
       dispatch(createMessageActionCreator);
       dispatch(messagesListThunk);
       toast.success("Message Published correctly!");
-    } catch (error) {
-      toast.error(`Something gone wrong: ${error}`);
+    } catch (error: any) {
+      toast.error(`Something gone wrong: ${error.response.data.message}`);
     }
   };
 
@@ -142,7 +150,7 @@ export const messageUpdateThunk =
       dispatch(updateMessageActionCreator(formData.id));
       dispatch(mineMessagesListThunk(formData.username));
       toast.success("Message updated correctly!");
-    } catch (error) {
-      toast.error(`Something gone wrong: ${error}`);
+    } catch (error: any) {
+      toast.error(`Something gone wrong: ${error.response.data.message}`);
     }
   };
