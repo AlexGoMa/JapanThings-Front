@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface State {
+export interface State {
   id: string;
   name: string;
   username: string;
@@ -18,7 +18,7 @@ export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    login: (user, action) => ({ ...action.payload, logged: true }),
+    login: (user: State, action) => ({ ...action.payload, logged: true }),
     logout: () => ({ id: "", name: "", username: "", logged: false }),
   },
 });

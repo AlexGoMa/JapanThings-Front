@@ -17,6 +17,7 @@ import {
   logoutActionCreator,
 } from "./redux/features/userSlice";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import { State } from "./redux/features/userSlice";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -24,7 +25,7 @@ function App() {
     const token = localStorage.getItem("token");
 
     if (token) {
-      const userInfo = jwtDecode(token);
+      const userInfo: State = jwtDecode(token);
       dispatch(loginActionCreator(userInfo));
     } else {
       dispatch(logoutActionCreator());

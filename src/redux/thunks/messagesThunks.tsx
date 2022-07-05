@@ -9,6 +9,7 @@ import {
   createMessageActionCreator,
   deleteMessageActionCreator,
   loadMessagesActionCreator,
+  noMessagesActionCreator,
   updateMessageActionCreator,
 } from "../features/messagesSlice";
 import { loadOneMessageActionCreator } from "../features/oneMessageSlice";
@@ -59,6 +60,7 @@ export const mineMessagesListThunk =
       dispatch(loadMessagesActionCreator(messages));
       stopOkLoadingModal(`Messages Loaded`);
     } catch (error: any) {
+      dispatch(noMessagesActionCreator());
       stopErrorLoadingModal(
         `Something gone wrong: ${error.response.data.message}`
       );
