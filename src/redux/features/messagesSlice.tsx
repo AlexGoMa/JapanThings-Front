@@ -25,6 +25,7 @@ const messageSlice = createSlice({
           ? { ...action.payload }
           : { ...message }
       ),
+    noMessages: () => [],
   },
 });
 
@@ -33,6 +34,7 @@ export const {
   deleteMessage: deleteMessageActionCreator,
   createMessage: createMessageActionCreator,
   updateMessage: updateMessageActionCreator,
+  noMessages: noMessagesActionCreator,
 } = messageSlice.actions;
 
 export default messageSlice.reducer;
