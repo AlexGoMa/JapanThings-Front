@@ -52,7 +52,6 @@ const MineMessageList = () => {
                   There are not messages still created in the private part,
                   start creating one in "create message" in the upper menu
                 </p>
-                ;
               </>
             )}
           </ul>
